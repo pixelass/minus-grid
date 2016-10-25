@@ -37,15 +37,15 @@
     "react-dom": "^15.3.2"
   },
   "devDependencies": {
-    "autoprefixer": "^6.5.1",
     "coveralls": "^2.11.14",
     "cz-conventional-changelog": "^1.2.0",
-    "husky": "^0.11.8",
+    "husky": "^0.11.9",
     "node-sass": "^3.10.1",
     "postcss-cli": "^2.6.0",
+    "postcss-cssnext": "^2.8.0",
     "sass-lint": "^1.9.1",
     "sassdoc": "^2.1.20",
-    "standard-version": "^2.4.0"
+    "standard-version": "^3.0.0"
   },
   "config": {
     "commitizen": {
