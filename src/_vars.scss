@@ -1,47 +1,47 @@
-@import 'functions';
 /// settings
+/// all variables are defined as default to allow easy overwriting
 /// @author Gregor Adams <greg@pixelass.com>
 
 /// List of breakpoints. Defines how many columns are shown at each breakpoint
 /// @name breakpoints
 /// @type List
-$breakpoints: (4, 8, 12);
+$breakpoints: (4, 8, 12) !default;
 
 /// List of names. These names will be used as the inline CSS variables
 /// @name names
 /// @type List
-$names: (--viewport-small, --viewport-medium, --viewport-large);
+$names: (--viewport-small, --viewport-medium, --viewport-large) !default;
 
 /// randomly generated variable
 /// @type List
-$colspan: hashVar(10, 'colspan');
+$colspan: hashVar(10, 'colspan') !default;
 
 /// custom prop for column margin
 /// @name margin
 /// @type Keyword
-$margin: --column-margin;
+$margin: --column-margin !default;
 
 /// custom prop for column padding
 /// @name padding
 /// @type Keyword
-$padding: --column-padding;
+$padding: --column-padding !default;
 
 /// custom prop for column count
 /// @name columns
 /// @type Keyword
-$column-count: --column-count;
+$column-count: --column-count !default;
 
 /// selector for grids
 /// @name grid-selector
 /// @type String
-$grid-selector: '.grid';
+$grid-selector: '.grid' !default;
 
 /// selector for rows
 /// @name row-selector
 /// @type String
-$row-selector: '.row';
+$row-selector: '.row' !default;
 
 /// selector for columns
 /// @name column-selector
 /// @type String
-$column-selector: '.column';
+$column-selector: '.column' !default;
