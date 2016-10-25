@@ -1,0 +1,103 @@
+@import 'vars';
+
+/********************************************
+*  LOGIC                                    *
+********************************************/
+
+/**
+ * .grid and .row follow the same flexbox logic
+ */
+.grid,
+.row {
+  // box model
+  /**
+   * Box model for columns
+   * (1): create flexbox
+   * (2): ensure direction row
+   * (3): allow wrapping
+   * (4): ensure full width
+   */
+  /* (1) */
+  display: flex !important;
+  /* (2) */
+  flex-direction: row !important;
+  /* (3) */
+  flex-wrap: wrap !important;
+   /* (2, 3) */
+  flex-flow: row wrap !important;
+  /* (4) */
+  flex: 0 0 100% !important;
+}
+
+/**
+ * A row resets margin and padding.
+ * It sets the columns to the current colspan
+ */
+.row {
+  // set columns to parents colspan
+  --columns: var(--colspan);
+
+  // box model
+  /**
+   * Box model for columns
+   * (1): ensure horizontal padding to be 0
+   * (2): reset margins and paddings
+   */
+  /* (1) */
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  /* (2) */
+  margin-left: calc((var(--padding) + var(--margin)) * -1px) !important;
+  margin-right: calc((var(--padding) + var(--margin)) * -1px) !important;
+}
+
+/**
+ * A column provides margin and padding.
+ * It allows changing the size via inline styles
+ * @example
+ * style="--m: 4; --l: 6"
+ */
+.column {
+  // default to first name
+  /**
+   * colspan:
+   * @default #{nth($names, 1)}
+   */
+  --colspan: var(--#{nth($names, 1)});
+
+  // generate defaults
+  /**
+   * each property defaults to the previous value
+   * The first property defaults to 1
+   */
+  @each $columns in $breakpoints {
+    $index: index($breakpoints, $columns);
+    $this: --#{nth($names, $index)};
+    @if $index > 1 {
+      $prev: --#{nth($names, $index - 1)};
+      #{$this}: var(#{$prev});
+    }
+    @else {
+      #{$this}: 1
+    }
+  }
+
+  // box model
+  /**
+   * Box model for columns
+   * (1): ensure border-box
+   * (2): set paddings
+   * (3): set margins
+   * (4): width based on properties
+   */
+  /* (1) */
+  box-sizing: border-box !important;
+  /* (2) */
+  padding-left: calc(var(--padding) * 1px) !important;
+  padding-right: calc(var(--padding) * 1px) !important;
+  /* (3) */
+  margin-right: calc(var(--margin) * 1px) !important;
+  margin-left: calc(var(--margin) * 1px) !important;
+  /* (4) */
+  width: calc(100% / var(--columns) * var(--colspan) - var(--margin) * 2px) !important;
+}

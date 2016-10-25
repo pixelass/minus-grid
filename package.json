@@ -1,0 +1,55 @@
+{
+  "name": "minus-grid",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.css",
+  "folders": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "npm run sass:build && npm run postcss && npm run minify",
+    "postcss": "postcss --use postcss-cssnext dist/index.css > dist/index.prefixed.css",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "docs": "sassdoc src",
+    "lint": "sass-lint src",
+    "prerelease": "npm run build; npm test",
+    "posttest": "npm run lint",
+    "release": "standard-version --no-verify",
+    "test": "",
+    "sass:build": "node-sass src/index.scss dist/index.css",
+    "sass:watch": "node-sass --watch src/index.scss dist/index.css",
+    "watch": "npm run sass:watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pixelass/minus-grid.git"
+  },
+  "keywords": [],
+  "author": "Gregor Adams <greg@pixelass.com> (http://pixelass.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pixelass/minus-grid/issues"
+  },
+  "homepage": "https://github.com/pixelass/minus-grid#readme",
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.5.1",
+    "coveralls": "^2.11.14",
+    "cz-conventional-changelog": "^1.2.0",
+    "husky": "^0.11.8",
+    "node-sass": "^3.10.1",
+    "postcss-cli": "^2.6.0",
+    "sass-lint": "^1.9.1",
+    "sassdoc": "^2.1.20",
+    "standard-version": "^2.4.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

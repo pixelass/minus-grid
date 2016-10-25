@@ -1,0 +1,30 @@
+@import 'vars';
+
+/********************************************
+*  RESPONSIVE                               *
+********************************************/
+@each $columns in $breakpoints {
+  $index: index($breakpoints, $columns);
+  $snap: $columns;
+  $name: nth($names, $index);
+  $this: --#{$name};
+  @if $index > 1 {
+    $snap: (nth($breakpoints, $index - 1) - $columns) / 2 + $columns;
+  }
+  /**
+   * breakpoint for #{$name}-viewport
+   * (1) set column count on grid to #{$columns}
+   * (2) set colspan to #{$this}
+   */
+  $min-width: $snap * 80px;
+  @media (min-width: #{$min-width}) {
+    .grid {
+      /* (1) */
+      --columns: $columns;
+    }
+    .column {
+      /* (2) */
+      --colspan: var(#{$this});
+    }
+  }
+}

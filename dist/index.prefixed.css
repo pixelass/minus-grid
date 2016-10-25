@@ -1,0 +1,143 @@
+/********************************************
+*  Defaults                                    *
+********************************************/
+/**
+ * defaults are set inside the selector to prevent post-css
+ * from trying to resolve these variables.
+ */
+.grid {
+  --columns: 4;
+  --margin: 12;
+  --padding: 16; }
+
+/********************************************
+*  LOGIC                                    *
+********************************************/
+/**
+ * .grid and .row follow the same flexbox logic
+ */
+.grid,
+.row {
+  /**
+   * Box model for columns
+   * (1): create flexbox
+   * (2): ensure direction row
+   * (3): allow wrapping
+   * (4): ensure full width
+   */
+  /* (1) */
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  /* (2) */
+  -webkit-box-orient: horizontal !important;
+  -webkit-box-direction: normal !important;
+      -ms-flex-direction: row !important;
+          flex-direction: row !important;
+  /* (3) */
+  -ms-flex-wrap: wrap !important;
+      flex-wrap: wrap !important;
+  /* (2, 3) */
+  -ms-flex-flow: row wrap !important;
+      flex-flow: row wrap !important;
+  /* (4) */
+  -webkit-box-flex: 0 !important;
+      -ms-flex: 0 0 100% !important;
+          flex: 0 0 100% !important; }
+
+/**
+ * A row resets margin and padding.
+ * It sets the columns to the current colspan
+ */
+.row {
+  --columns: var(--colspan);
+  /**
+   * Box model for columns
+   * (1): ensure horizontal padding to be 0
+   * (2): reset margins and paddings
+   */
+  /* (1) */
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  /* (2) */
+  margin-left: calc((var(--padding) + var(--margin)) * -1px) !important;
+  margin-right: calc((var(--padding) + var(--margin)) * -1px) !important; }
+
+/**
+ * A column provides margin and padding.
+ * It allows changing the size via inline styles
+ * @example
+ * style="--m: 4; --l: 6"
+ */
+.column {
+  /**
+   * colspan:
+   * @default m
+   */
+  --colspan: var(--m);
+  /**
+   * each property defaults to the previous value
+   * The first property defaults to 1
+   */
+  --m: 1;
+  --l: var(--m);
+  --xl: var(--l);
+  /**
+   * Box model for columns
+   * (1): ensure border-box
+   * (2): set paddings
+   * (3): set margins
+   * (4): width based on properties
+   */
+  /* (1) */
+  box-sizing: border-box !important;
+  /* (2) */
+  padding-left: calc(var(--padding) * 1px) !important;
+  padding-right: calc(var(--padding) * 1px) !important;
+  /* (3) */
+  margin-right: calc(var(--margin) * 1px) !important;
+  margin-left: calc(var(--margin) * 1px) !important;
+  /* (4) */
+  width: calc(100% / var(--columns) * var(--colspan) - var(--margin) * 2px) !important; }
+
+/********************************************
+*  RESPONSIVE                               *
+********************************************/
+/**
+   * breakpoint for m-viewport
+   * (1) set column count on grid to 4
+   * (2) set colspan to --m
+   */
+@media (min-width: 320px) {
+  .grid {
+    /* (1) */
+    --columns: 4; }
+  .column {
+    /* (2) */
+    --colspan: var(--m); } }
+
+/**
+   * breakpoint for l-viewport
+   * (1) set column count on grid to 8
+   * (2) set colspan to --l
+   */
+@media (min-width: 480px) {
+  .grid {
+    /* (1) */
+    --columns: 8; }
+  .column {
+    /* (2) */
+    --colspan: var(--l); } }
+
+/**
+   * breakpoint for xl-viewport
+   * (1) set column count on grid to 12
+   * (2) set colspan to --xl
+   */
+@media (min-width: 800px) {
+  .grid {
+    /* (1) */
+    --columns: 12; }
+  .column {
+    /* (2) */
+    --colspan: var(--xl); } }
