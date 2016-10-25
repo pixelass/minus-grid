@@ -7,7 +7,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "npm run sass:build && npm run postcss && npm run minify",
+    "build": "npm run sass:build && npm run postcss",
     "postcss": "postcss --use postcss-cssnext dist/index.css > dist/index.prefixed.css",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "docs": "sassdoc src",
