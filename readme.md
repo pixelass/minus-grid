@@ -87,3 +87,52 @@ each row opens a new grid. The column count is the same as the size of the paren
     .row // 4 columns
       .column(style={'--viewport-small': 'var(--column-count)'})
 ```
+
+#### Use with React.js
+
+While React.js does not support inline CSS variables there is a workaround.
+You can see a working demo [on Codepen](https://codepen.io/pixelass/pen/bwkOpB)
+
+```jsx
+import React, {Component, PropTypes} from 'react'
+import classNames from 'classnames'
+import styles from 'minus-grid'
+
+class Column extends Component {
+  constructor (props) {
+    super(props)
+  }
+
+  componentDidMount () {
+    this.setProps()
+  }
+
+  componentDidUpdate () {
+    this.setProps()
+  }
+
+  setProps () {
+    const {m, l, xl} = this.props
+    this.root.style.setProperty('--viewport-small', m)
+    this.root.style.setProperty('--viewport-medium', l)
+    this.root.style.setProperty('--viewport-large', xl)
+  }
+
+  render () {
+    return (
+      <div className={classNames(styles.column, this.props.className)}
+           ref={x => { this.root = x }}>
+        {this.props.children}
+      </div>
+    )
+  }
+}
+
+Column.propTypes = {
+  m: PropTypes.oneOfType([PropTypes.number,PropTypes.string]),
+  l: PropTypes.oneOfType([PropTypes.number,PropTypes.string]),
+  xl: PropTypes.oneOfType([PropTypes.number,PropTypes.string]),
+  className: PropTypes.string,
+  children: PropTypes.node
+}
+```
