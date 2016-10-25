@@ -27,12 +27,17 @@ The results is a lightweight grid with a few lines of boilerplate and full flexi
 
 This grid uses three different CSS selectors.
 
-.grid
-.row
-.column
-Endless nesting, same logic
+* `.grid`
+* `.row`
+* `.column`
+
+
+#### Endless nesting, same logic
 
 A grid can be nested endlessly while preserving the column size
+
+#### Custom naming
+Generate a file with your own naming convention, using the SCSS files
 
 #### Advanced config
 
@@ -40,15 +45,15 @@ A grid can be nested endlessly while preserving the column size
 
 ```css
 /* always 1/2 of its parent */
---m: calc(var(--columns) / 2);
+--viewport-small: calc(var(--column-count) / 2);
 
 /* always 3/4 of its parent */
---m: calc(var(--columns) / 4 * 3);
+--viewport-small: calc(var(--column-count) / 4 * 3);
 
 /* change per breakpoint */
---m: calc(var(--columns) / 4 * 3);
---l: calc(var(--columns) / 2);
---xl: calc(var(--columns) / 3);
+--viewport-small: calc(var(--column-count) / 4 * 3);
+--viewport-medium: calc(var(--column-count) / 2);
+--viewport-large: calc(var(--column-count) / 3);
 ```
 
 ## Set size as css variables
@@ -57,21 +62,17 @@ Since the cascade can/will break the logic, the variables are defined as inline 
 #### Max values:
 
 ```css
-.column {
-  --m: 4
-  --l: 8
-  --xl: 12
- }
+--viewport-small: 4
+--viewport-medium: 8
+--viewport-large: 12
 ````
 
 #### Default value:
 
 ```css
-.column {
-  --m: 1
-  --l: var(--m)
-  --xl: var(--l)
-}
+--viewport-small: 1
+--viewport-medium: var(--viewport-small)
+--viewport-large: var(--viewport-medium)
 ```
 
 #### CSS context
@@ -82,7 +83,7 @@ each row opens a new grid. The column count is the same as the size of the paren
 
 ````jade
 .grid // 12 columns
-  .column(style={'--m': 4})
+  .column(style={'--viewport-small': 4})
     .row // 4 columns
-      .column(style={'--m': 'var(--columns)'})
+      .column(style={'--viewport-small': 'var(--column-count)'})
 ```
