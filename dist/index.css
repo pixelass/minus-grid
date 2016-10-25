@@ -6,15 +6,16 @@
  * from trying to resolve these variables.
  */
 .grid {
-  --columns: 4;
-  --margin: 12;
-  --padding: 16; }
+  --column-count: 4;
+  --column-margin: 12;
+  --column-padding: 16;
+}
 
 /********************************************
 *  LOGIC                                    *
 ********************************************/
 /**
- * .grid and .row follow the same flexbox logic
+ * `.grid` and `.row follow the same flexbox logic
  */
 .grid,
 .row {
@@ -34,14 +35,15 @@
   /* (2, 3) */
   flex-flow: row wrap !important;
   /* (4) */
-  flex: 0 0 100% !important; }
+  flex: 0 0 100% !important;
+}
 
 /**
  * A row resets margin and padding.
  * It sets the columns to the current colspan
  */
 .row {
-  --columns: var(--colspan);
+  --column-count: var(--colspan-HSAhw31gGf);
   /**
    * Box model for columns
    * (1): ensure horizontal padding to be 0
@@ -51,11 +53,12 @@
   padding-left: 0 !important;
   padding-right: 0 !important;
   /* (2) */
-  margin-left: calc((var(--padding) + var(--margin)) * -1px) !important;
-  margin-right: calc((var(--padding) + var(--margin)) * -1px) !important; }
+  margin-left: calc((var(--column-padding) + var(--column-margin)) * -1px) !important;
+  margin-right: calc((var(--column-padding) + var(--column-margin)) * -1px) !important;
+}
 
 /**
- * A column provides margin and padding.
+ * A `.column` provides margin and padding.
  * It allows changing the size via inline styles
  * @example
  * style="--m: 4; --l: 6"
@@ -63,16 +66,16 @@
 .column {
   /**
    * colspan:
-   * @default m
+   * @default --viewport-small
    */
-  --colspan: var(--m);
+  --colspan-HSAhw31gGf: var(--viewport-small);
   /**
    * each property defaults to the previous value
    * The first property defaults to 1
    */
-  --m: 1;
-  --l: var(--m);
-  --xl: var(--l);
+  --viewport-small: 1;
+  --viewport-medium: var(--viewport-small);
+  --viewport-large: var(--viewport-medium);
   /**
    * Box model for columns
    * (1): ensure border-box
@@ -83,52 +86,62 @@
   /* (1) */
   box-sizing: border-box !important;
   /* (2) */
-  padding-left: calc(var(--padding) * 1px) !important;
-  padding-right: calc(var(--padding) * 1px) !important;
+  padding-left: calc(var(--column-padding) * 1px) !important;
+  padding-right: calc(var(--column-padding) * 1px) !important;
   /* (3) */
-  margin-right: calc(var(--margin) * 1px) !important;
-  margin-left: calc(var(--margin) * 1px) !important;
+  margin-right: calc(var(--column-margin) * 1px) !important;
+  margin-left: calc(var(--column-margin) * 1px) !important;
   /* (4) */
-  width: calc(100% / var(--columns) * var(--colspan) - var(--margin) * 2px) !important; }
+  width: calc(100% / var(--column-count) * var(--colspan-HSAhw31gGf) - var(--column-margin) * 2px) !important;
+}
 
 /********************************************
 *  RESPONSIVE                               *
 ********************************************/
 /**
-   * breakpoint for m-viewport
-   * (1) set column count on grid to 4
-   * (2) set colspan to --m
+   * breakpoint for --viewport-small
+   * (1) set column count on grid to --column-count
+   * (2) set colspan to --viewport-small
    */
 @media (min-width: 320px) {
   .grid {
     /* (1) */
-    --columns: 4; }
+    --column-count: 4;
+  }
   .column {
     /* (2) */
-    --colspan: var(--m); } }
+    --colspan-HSAhw31gGf: var(--viewport-small);
+  }
+}
 
 /**
-   * breakpoint for l-viewport
-   * (1) set column count on grid to 8
-   * (2) set colspan to --l
+   * breakpoint for --viewport-medium
+   * (1) set column count on grid to --column-count
+   * (2) set colspan to --viewport-medium
    */
 @media (min-width: 480px) {
   .grid {
     /* (1) */
-    --columns: 8; }
+    --column-count: 8;
+  }
   .column {
     /* (2) */
-    --colspan: var(--l); } }
+    --colspan-HSAhw31gGf: var(--viewport-medium);
+  }
+}
 
 /**
-   * breakpoint for xl-viewport
-   * (1) set column count on grid to 12
-   * (2) set colspan to --xl
+   * breakpoint for --viewport-large
+   * (1) set column count on grid to --column-count
+   * (2) set colspan to --viewport-large
    */
 @media (min-width: 800px) {
   .grid {
     /* (1) */
-    --columns: 12; }
+    --column-count: 12;
+  }
   .column {
     /* (2) */
-    --colspan: var(--xl); } }
+    --colspan-HSAhw31gGf: var(--viewport-large);
+  }
+}

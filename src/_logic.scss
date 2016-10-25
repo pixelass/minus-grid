@@ -1,14 +1,12 @@
-@import 'vars';
-
 /********************************************
 *  LOGIC                                    *
 ********************************************/
 
 /**
- * .grid and .row follow the same flexbox logic
+ * `#{$grid-selector}` and `#{$row-selector} follow the same flexbox logic
  */
-.grid,
-.row {
+#{$grid-selector},
+#{$row-selector} {
   // box model
   /**
    * Box model for columns
@@ -33,9 +31,9 @@
  * A row resets margin and padding.
  * It sets the columns to the current colspan
  */
-.row {
+#{$row-selector} {
   // set columns to parents colspan
-  --columns: var(--colspan);
+  #{$column-count}: var(#{$colspan});
 
   // box model
   /**
@@ -47,38 +45,38 @@
   padding-left: 0 !important;
   padding-right: 0 !important;
   /* (2) */
-  margin-left: calc((var(--padding) + var(--margin)) * -1px) !important;
-  margin-right: calc((var(--padding) + var(--margin)) * -1px) !important;
+  margin-left: calc((var(#{$padding}) + var(#{$margin})) * -1px) !important;
+  margin-right: calc((var(#{$padding}) + var(#{$margin})) * -1px) !important;
 }
 
 /**
- * A column provides margin and padding.
+ * A `#{$column-selector}` provides margin and padding.
  * It allows changing the size via inline styles
  * @example
  * style="--m: 4; --l: 6"
  */
-.column {
+#{$column-selector} {
   // default to first name
   /**
    * colspan:
    * @default #{nth($names, 1)}
    */
-  --colspan: var(--#{nth($names, 1)});
+  #{$colspan}: var(#{nth($names, 1)});
 
   // generate defaults
   /**
    * each property defaults to the previous value
    * The first property defaults to 1
    */
-  @each $columns in $breakpoints {
-    $index: index($breakpoints, $columns);
-    $this: --#{nth($names, $index)};
+  @each $breakpoint in $breakpoints {
+    $index: index($breakpoints, $breakpoint);
+    $this: #{nth($names, $index)};
     @if $index > 1 {
-      $prev: --#{nth($names, $index - 1)};
+      $prev: #{nth($names, $index - 1)};
       #{$this}: var(#{$prev});
     }
     @else {
-      #{$this}: 1
+      #{$this}: 1;
     }
   }
 
@@ -93,11 +91,11 @@
   /* (1) */
   box-sizing: border-box !important;
   /* (2) */
-  padding-left: calc(var(--padding) * 1px) !important;
-  padding-right: calc(var(--padding) * 1px) !important;
+  padding-left: calc(var(#{$padding}) * 1px) !important;
+  padding-right: calc(var(#{$padding}) * 1px) !important;
   /* (3) */
-  margin-right: calc(var(--margin) * 1px) !important;
-  margin-left: calc(var(--margin) * 1px) !important;
+  margin-right: calc(var(#{$margin}) * 1px) !important;
+  margin-left: calc(var(#{$margin}) * 1px) !important;
   /* (4) */
-  width: calc(100% / var(--columns) * var(--colspan) - var(--margin) * 2px) !important;
+  width: calc(100% / var(#{$column-count}) * var(#{$colspan}) - var(#{$margin}) * 2px) !important;
 }

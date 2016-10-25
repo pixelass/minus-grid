@@ -1,30 +1,27 @@
-@import 'vars';
-
 /********************************************
 *  RESPONSIVE                               *
 ********************************************/
-@each $columns in $breakpoints {
-  $index: index($breakpoints, $columns);
-  $snap: $columns;
+@each $breakpoint in $breakpoints {
+  $index: index($breakpoints, $breakpoint);
+  $snap: $breakpoint;
   $name: nth($names, $index);
-  $this: --#{$name};
   @if $index > 1 {
-    $snap: (nth($breakpoints, $index - 1) - $columns) / 2 + $columns;
+    $snap: (nth($breakpoints, $index - 1) - $breakpoint) / 2 + $breakpoint;
   }
   /**
-   * breakpoint for #{$name}-viewport
-   * (1) set column count on grid to #{$columns}
-   * (2) set colspan to #{$this}
+   * breakpoint for #{$name}
+   * (1) set column count on grid to #{$column-count}
+   * (2) set colspan to #{$name}
    */
   $min-width: $snap * 80px;
   @media (min-width: #{$min-width}) {
-    .grid {
+    #{$grid-selector} {
       /* (1) */
-      --columns: $columns;
+      #{$column-count}: $breakpoint;
     }
-    .column {
+    #{$column-selector} {
       /* (2) */
-      --colspan: var(#{$this});
+      #{$colspan}: var(#{$name});
     }
   }
 }

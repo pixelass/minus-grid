@@ -1,5 +1,3 @@
-@import 'vars';
-
 /********************************************
 *  Defaults                                    *
 ********************************************/
@@ -8,8 +6,8 @@
  * defaults are set inside the selector to prevent post-css
  * from trying to resolve these variables.
  */
-.grid {
-  --columns: nth($breakpoints, 1);
-  --margin: 12;
-  --padding: 16;
+#{$grid-selector} {
+  #{$column-count}: nth($breakpoints, 1);
+  #{$margin}: 12;
+  #{$padding}: 16;
 }
