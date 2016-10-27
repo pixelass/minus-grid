@@ -7,21 +7,22 @@
   $name: nth($names, $index);
   @if $index > 1 {
     $snap: (nth($breakpoints, $index - 1) - $breakpoint) / 2 + $breakpoint;
-  }
-  /**
-   * breakpoint for #{$name}
-   * (1) set column count on grid to #{$column-count}
-   * (2) set colspan to #{$name}
-   */
-  $min-width: $snap * 80px;
-  @media (min-width: #{$min-width}) {
-    #{$grid-selector} {
-      /* (1) */
-      #{$column-count}: $breakpoint;
-    }
-    #{$column-selector} {
-      /* (2) */
-      #{$colspan}: var(#{$name});
+
+    /**
+     * breakpoint for #{$name}
+     * (1) set column count on grid to #{$breakpoint}
+     * (2) set colspan to #{$name}
+     */
+    $min-width: $snap * $base-size * 1px;
+    @media (min-width: #{$min-width}) {
+      #{$grid-selector} {
+        /* (1) */
+        #{$column-count}: $breakpoint;
+      }
+      #{$column-selector} {
+        /* (2) */
+        #{$colspan}: var(#{$name});
+      }
     }
   }
 }

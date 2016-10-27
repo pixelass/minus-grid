@@ -7,8 +7,8 @@
  */
 .grid {
   --column-count: 4;
-  --column-margin: 12;
-  --column-padding: 16;
+  --column-margin: 6;
+  --column-padding: 8;
 }
 
 /********************************************
@@ -48,11 +48,11 @@
 }
 
 /**
- * A row resets margin and padding.
+ * A .row` resets margin and padding.
  * It sets the columns to the current colspan
  */
 .row {
-  --column-count: var(--colspan-HWGnxIEflR);
+  --column-count: var(--colspan-kOrqWBsUHq);
   /**
    * Box model for columns
    * (1): ensure horizontal padding to be 0
@@ -70,14 +70,14 @@
  * A `.column` provides margin and padding.
  * It allows changing the size via inline styles
  * @example
- * style="--m: 4; --l: 6"
+ * style="--viewport-small: 4; --viewport-medium: 6"
  */
 .column {
   /**
    * colspan:
    * @default --viewport-small
    */
-  --colspan-HWGnxIEflR: var(--viewport-small);
+  --colspan-kOrqWBsUHq: var(--viewport-small);
   /**
    * each property defaults to the previous value
    * The first property defaults to 1
@@ -101,33 +101,17 @@
   margin-right: calc(var(--column-margin) * 1px) !important;
   margin-left: calc(var(--column-margin) * 1px) !important;
   /* (4) */
-  width: calc(100% / var(--column-count) * var(--colspan-HWGnxIEflR) - var(--column-margin) * 2px) !important;
+  width: calc(100% / var(--column-count) * var(--colspan-kOrqWBsUHq) - var(--column-margin) * 2px) !important;
 }
 
 /********************************************
 *  RESPONSIVE                               *
 ********************************************/
 /**
-   * breakpoint for --viewport-small
-   * (1) set column count on grid to --column-count
-   * (2) set colspan to --viewport-small
-   */
-@media (min-width: 320px) {
-  .grid {
-    /* (1) */
-    --column-count: 4;
-  }
-  .column {
-    /* (2) */
-    --colspan-HWGnxIEflR: var(--viewport-small);
-  }
-}
-
-/**
-   * breakpoint for --viewport-medium
-   * (1) set column count on grid to --column-count
-   * (2) set colspan to --viewport-medium
-   */
+     * breakpoint for --viewport-medium
+     * (1) set column count on grid to 8
+     * (2) set colspan to --viewport-medium
+     */
 @media (min-width: 480px) {
   .grid {
     /* (1) */
@@ -135,15 +119,15 @@
   }
   .column {
     /* (2) */
-    --colspan-HWGnxIEflR: var(--viewport-medium);
+    --colspan-kOrqWBsUHq: var(--viewport-medium);
   }
 }
 
 /**
-   * breakpoint for --viewport-large
-   * (1) set column count on grid to --column-count
-   * (2) set colspan to --viewport-large
-   */
+     * breakpoint for --viewport-large
+     * (1) set column count on grid to 12
+     * (2) set colspan to --viewport-large
+     */
 @media (min-width: 800px) {
   .grid {
     /* (1) */
@@ -151,6 +135,6 @@
   }
   .column {
     /* (2) */
-    --colspan-HWGnxIEflR: var(--viewport-large);
+    --colspan-kOrqWBsUHq: var(--viewport-large);
   }
 }

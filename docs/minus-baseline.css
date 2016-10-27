@@ -1,0 +1,118 @@
+/********************************************
+*  Defaults                                    *
+********************************************/
+/**
+ * defaults are set inside the selector to prevent post-css
+ * from trying to resolve these variables.
+ */
+.baseline {
+  font-size: calc(var(--basesize) * 1px);
+  --basesize: 16;
+  --capsize: 1;
+  --baseline: 20;
+  --font-size-PrUwNButnS: var(--basesize);
+  --line-height-xr3q4vmezH: calc(var(--baseline) / var(--font-size-PrUwNButnS));
+}
+
+.baseline * {
+  --margin-top-aa: 0px;
+  --margin-bottom-ab: 0px;
+  --padding-top-ac: 0px;
+  --padding-bottom-ad: 0px;
+  padding-top: var(--padding-top-ac);
+  padding-bottom: var(--padding-bottom-ad);
+  margin-top: var(--margin-top-aa);
+  margin-bottom: var(--margin-bottom-ab);
+  font-size: calc(var(--font-size-PrUwNButnS) * 1px);
+}
+
+.baseline body {
+  line-height: var(--line-height-xr3q4vmezH);
+  font-size: calc(var(--font-size-PrUwNButnS) * 1px);
+}
+
+/********************************************
+*  LOGIC                                    *
+********************************************/
+.baseline h1,
+.baseline h2,
+.baseline h3,
+.baseline h4,
+.baseline h5,
+.baseline h6,
+.baseline p,
+.baseline pre,
+.baseline blockquote,
+.baseline ul,
+.baseline ol,
+.baseline figure,
+.baseline label,
+.baseline fieldset {
+  --diff-H9g62fJ2Az: calc((var(--line-height-xr3q4vmezH) - 1) * var(--font-size-PrUwNButnS) * var(--capsize));
+  --padding-top-ac: calc(var(--diff-H9g62fJ2Az) * 1px);
+}
+
+.baseline h1,
+.baseline h2,
+.baseline h6,
+.baseline p,
+.baseline pre,
+.baseline blockquote,
+.baseline ul,
+.baseline ol,
+.baseline figure,
+.baseline label,
+.baseline fieldset {
+  --margin-bottom-ab: calc(var(--baseline) * 1px - var(--padding-top-ac));
+}
+
+.baseline h1,
+.baseline h2,
+.baseline h3,
+.baseline h4,
+.baseline h5 {
+  --font-size-PrUwNButnS: calc(var(--basesize) * var(--multiplier-by5x2iI83n));
+}
+
+.baseline h1,
+.baseline h2 {
+  --line-height-xr3q4vmezH: calc(var(--baseline) * var(--multiplier-by5x2iI83n) / var(--font-size-PrUwNButnS));
+}
+
+.baseline h3,
+.baseline h4,
+.baseline h5 {
+  --line-height-xr3q4vmezH: calc(var(--baseline) * 2 / var(--font-size-PrUwNButnS));
+  --margin-bottom-ab: calc(var(--baseline) * (3 - var(--multiplier-by5x2iI83n)) * 1px - var(--padding-top-ac));
+}
+
+.baseline img {
+  display: block;
+}
+
+.baseline h1 {
+  --multiplier-by5x2iI83n: 4;
+}
+
+.baseline h2 {
+  --multiplier-by5x2iI83n: 3;
+}
+
+.baseline h3 {
+  --multiplier-by5x2iI83n: 1.75;
+}
+
+.baseline h4 {
+  --multiplier-by5x2iI83n: 1.5;
+}
+
+.baseline h5 {
+  --multiplier-by5x2iI83n: 1.25;
+}
+
+.baseline ul ul,
+.baseline ul ol,
+.baseline ol ul,
+.baseline ol ol {
+  --padding-top-ac: 0px;
+}

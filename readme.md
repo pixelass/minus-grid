@@ -16,8 +16,8 @@ A grid powered by CSS custom properties
 
 
 ## Demo
-[Documentation](https://pixelass.github.io/minus-grid/)  
-[Demo on Codepen](https://codepen.io/pixelass/pen/yawEdy)
+[Documentation](https://pixelass.github.io/minus-grid/sass)  
+[Demo](https://pixelass.github.io/minus-grid/)  
 
 ## Minus minus grid
 "minus minus grid" uses the power of css variables a.k.a. custom properties. 

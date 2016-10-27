@@ -8,6 +8,6 @@
  */
 #{$grid-selector} {
   #{$column-count}: nth($breakpoints, 1);
-  #{$margin}: 12;
-  #{$padding}: 16;
+  #{$margin}: $default-margin;
+  #{$padding}: $default-padding;
 }

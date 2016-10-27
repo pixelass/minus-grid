@@ -28,7 +28,7 @@
 }
 
 /**
- * A row resets margin and padding.
+ * A #{$row-selector}` resets margin and padding.
  * It sets the columns to the current colspan
  */
 #{$row-selector} {
@@ -53,7 +53,7 @@
  * A `#{$column-selector}` provides margin and padding.
  * It allows changing the size via inline styles
  * @example
- * style="--m: 4; --l: 6"
+ * style="#{nth($names, 1)}: 4; #{nth($names, 2)}: 6"
  */
 #{$column-selector} {
   // default to first name
