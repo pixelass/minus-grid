@@ -1,30 +1,10 @@
-/// Creates a random hash
+/// Creates a random "css variable"/"custom property" name with a prefix and a unique suffix.
 /// @author Gregor Adams <greg@pixelass.com>
-/// @name hash
-/// @param {Number} count [5] length of string
-/// @return {String} a random hash
-/// @example
-/// $hash: hash(); // abe8G
-/// $hash: hash(8); // 2N1olDW4
-@function hash($count: 5) {
-  $chars: (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
-  $hash: '';
-  @for $i from 1 through $count {
-    $char: nth($chars, random(length($chars)));
-    $hash: '#{$hash}#{$char}';
-  }
-  @return $hash;
-}
-
-/// Creates a random "css variable"/"custom property" name with a prefix and a hash suffix.
-/// @author Gregor Adams <greg@pixelass.com>
-/// @name hashVar
-/// @param {Number} hash [5] length of hash
-/// @param {String} prefix ['var'] prefix before hash
+/// @name uniqueVar
+/// @param {String} prefix ['var'] prefix before unique suffix
 /// @return {String} a random hashed custom property name
 /// @example
-/// $hashVar: hashVar();  // --var-s7Wan
-/// $hashVar: hashVar(8, 'foo'); // --foo-w7qMOxc8
-@function hashVar($hash: 5, $prefix: 'var') {
-  @return --#{$prefix}-#{hash($hash)};
+/// $uniqueVar: uniqueVar();  // --var-u652c1a57
+@function uniqueVar($prefix: 'var') {
+  @return --#{$prefix}-#{unique-id()};
 }

@@ -43,7 +43,7 @@
  * It sets the columns to the current colspan
  */
 .row {
-  --column-count: var(--colspan-kOrqWBsUHq);
+  --column-count: var(--colspan-uaeffd093);
   /**
    * Box model for columns
    * (1): ensure horizontal padding to be 0
@@ -68,7 +68,7 @@
    * colspan:
    * @default --viewport-small
    */
-  --colspan-kOrqWBsUHq: var(--viewport-small);
+  --colspan-uaeffd093: var(--viewport-small);
   /**
    * each property defaults to the previous value
    * The first property defaults to 1
@@ -92,7 +92,7 @@
   margin-right: calc(var(--column-margin) * 1px) !important;
   margin-left: calc(var(--column-margin) * 1px) !important;
   /* (4) */
-  width: calc(100% / var(--column-count) * var(--colspan-kOrqWBsUHq) - var(--column-margin) * 2px) !important;
+  width: calc(100% / var(--column-count) * var(--colspan-uaeffd093) - var(--column-margin) * 2px) !important;
 }
 
 /********************************************
@@ -110,7 +110,7 @@
   }
   .column {
     /* (2) */
-    --colspan-kOrqWBsUHq: var(--viewport-medium);
+    --colspan-uaeffd093: var(--viewport-medium);
   }
 }
 
@@ -126,6 +126,6 @@
   }
   .column {
     /* (2) */
-    --colspan-kOrqWBsUHq: var(--viewport-large);
+    --colspan-uaeffd093: var(--viewport-large);
   }
 }
