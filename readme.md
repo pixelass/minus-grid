@@ -81,7 +81,7 @@ each row opens a new grid. The column count is the same as the size of the paren
 
 #### Pug (Jade) example
 
-````jade
+```pug
 .grid // 12 columns
   .column(style={'--viewport-small': 4})
     .row // 4 columns
